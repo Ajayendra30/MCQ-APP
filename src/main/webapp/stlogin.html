@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="ISO-8859-1">
+<title>QuizSphere - Login</title>
+<link rel="icon"
+	href="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR5E6t_-UAilINNhPZ0TZ5oBxODN8HK0GM1jg&s"
+	type="image/png">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+	
+
+<style>
+/* RESET */
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif}
+
+/* PAGE + BACKGROUND */
+body{
+	min-height:100vh;width:100vw;
+	display:flex;flex-direction:column;
+	color:#000;
+	background:
+		linear-gradient(to bottom, rgba(255,255,255,0.88), rgba(255,255,255,0.88)),
+		url('https://images.unsplash.com/photo-1519389950473-47ba0277781c?q=80&w=1920&auto=format&fit=crop')
+		no-repeat center/cover;
+	background-attachment: fixed;
+}
+
+/* ---------- WHITE NAVBAR (LinkedIn Style) ---------- */
+nav{
+	width:100%;
+	padding:16px 60px;
+	background:white;
+	border-bottom:1px solid #dcdcdc;
+	display:flex;justify-content:space-between;align-items:center;
+	position:fixed;top:0;left:0;z-index:20;
+}
+nav h2{
+	font-size:28px;font-weight:700;color:#0a66c2;
+}
+nav ul{list-style:none;display:flex;gap:26px}
+nav ul li a{
+	text-decoration:none;color:#444;font-weight:600;font-size:15px;
+	padding:6px 4px;
+	transition:.25s;
+}
+nav ul li a:hover{
+	color:#0a66c2;
+	text-decoration:none;
+}
+
+/* MAIN CONTENT WRAPPER */
+.main-wrapper{
+	flex:1;
+	width:100%;
+	margin-top:90px; /* push below navbar */
+	display:flex;align-items:center;justify-content:center;
+}
+
+/* LEFT TEXT + ILLUSTRATION */
+.left{
+	flex:1;padding-left:8%;padding-right:4%;
+	display:flex;flex-direction:column;justify-content:center;
+	position:relative;
+}
+.left h1{
+	font-size:55px;font-weight:700;color:#0a66c2;margin-bottom:15px;
+}
+.left p{
+	font-size:20px;color:#444;max-width:450px;line-height:1.4;
+}
+.left::after{
+	content:"";
+	position:absolute;right:-40px;bottom:-20px;
+	width:520px;height:420px;
+	background:url('https://cdni.iconscout.com/illustration/premium/thumb/online-quiz-5426414-4534409.png?f=webp')
+	no-repeat center/contain;
+	opacity:0.95;pointer-events:none;
+	filter: drop-shadow(0 10px 24px rgba(0,0,0,0.15));
+}
+
+/* RIGHT LOGIN BOX */
+.right{
+	flex:1;display:flex;align-items:center;justify-content:center;
+	padding-right:8%;
+}
+.box{
+	background:#fff;padding:45px 35px;width:100%;max-width:380px;
+	border-radius:10px;border:1px solid #ddd;
+	box-shadow:0 4px 18px rgba(0,0,0,0.08);
+	text-align:center;
+}
+.box h2{
+	font-size:26px;font-weight:600;color:#111;margin-bottom:25px;
+}
+
+/* INPUTS */
+.input{position:relative;margin-bottom:20px;text-align:left}
+.input input{
+	width:100%;padding:12px 15px;font-size:15px;border-radius:6px;
+	border:1px solid #999;outline:none;background:#fff;transition:.2s;
+}
+.input input:focus{
+	border-color:#0a66c2;box-shadow:0 0 0 2px rgba(10,102,194,.25);
+}
+.input label{
+	position:absolute;left:12px;top:-9px;background:white;
+	font-size:12px;color:#555;padding:0 4px;
+}
+
+/* BLUE BUTTON */
+.button{
+	width:100%;padding:12px;border:none;border-radius:24px;font-size:17px;
+	font-weight:600;color:white;background:#0a66c2;cursor:pointer;transition:.25s;
+}
+.button:hover{background:#004182}
+
+/* NEW USER LINK */
+.New-User{margin-top:18px}
+.New-User a{
+	color:#0a66c2;font-weight:600;text-decoration:none;font-size:15px;
+}
+.New-User a:hover{text-decoration:underline}
+
+/* SOCIAL ICONS IN FOOTER */
+/* DARK PREMIUM FOOTER */
+.footer{
+	background:#0b0d12;
+	color:#d8e0ea;
+	padding:60px 10% 25px;
+	border-top:1px solid #1b1f26;
+	margin-top:50px;
+}
+.footer-container{
+	display:flex;
+	justify-content:space-between;
+	flex-wrap:wrap;
+	gap:40px;
+}
+
+/* Columns */
+.footer-col{
+	flex:1;
+	min-width:240px;
+}
+.footer-logo{
+	font-size:28px;
+	font-weight:700;
+	color:#0a66c2;
+}
+.footer-col h3{
+	font-size:18px;
+	margin-bottom:12px;
+	color:#fff;
+}
+.footer-col p{
+	font-size:14px;
+	line-height:1.6;
+	color:#b8c3d0;
+	max-width:260px;
+}
+.footer-col ul{
+	list-style:none;
+}
+.footer-col ul li{
+	margin:6px 0;
+}
+.footer-col ul li a{
+	text-decoration:none;
+	color:#cfd6e3;
+	font-size:15px;
+	transition:.25s;
+}
+.footer-col ul li a:hover{
+	color:#0a66c2;
+	margin-left:4px;
+}
+
+/* Social Icons */
+.footer-social{
+	display:flex;
+	gap:14px;
+	margin-top:8px;
+}
+.footer-social .icon{
+	font-size:20px;
+	color:#cfd6e3;
+	transition:.25s;
+}
+.footer-social .icon:hover{
+	color:#0a66c2;
+	transform:translateY(-3px);
+}
+
+/* Bottom Bar */
+.footer-bottom{
+	margin-top:40px;
+	text-align:center;
+	border-top:1px solid #1d232b;
+	padding-top:15px;
+	font-size:14px;
+	color:#9ca7b8;
+}
+.footer-bottom a{
+	color:#0a66c2;
+	text-decoration:none;
+}
+.footer-bottom a:hover{text-decoration:none}
+
+/* Responsive */
+@media(max-width:850px){
+	.footer-container{flex-direction:column;text-align:center}
+	.footer-col p{margin:0 auto}
+	.footer-social{justify-content:center}
+}
+
+/* RESPONSIVE */
+@media(max-width:1100px){
+	.left::after{right:-10px;bottom:-10px;width:420px;height:340px;opacity:.9}
+}
+@media(max-width:900px){
+	.main-wrapper{flex-direction:column;text-align:center}
+	.left{padding:0 24px;margin-bottom:25px}
+	.right{padding:0}
+	.left h1{font-size:42px}
+	.left p{font-size:18px;margin:0 auto}
+	.left::after{display:none}
+	nav{flex-direction:column;gap:6px;padding:12px 20px}
+}
+</style>
+</head>
+
+<body>
+
+<!-- ✅ NEW WHITE NAVBAR -->
+<nav>
+	<h2>QuizSphere</h2>
+	<ul>
+		<li><a href="index.html">Home</a></li>
+		<li><a href="#about">About Us</a></li>
+		<li><a href="#contact">Contact Us</a></li>
+	</ul>
+</nav>
+
+<div class="main-wrapper">
+
+	<!-- LEFT CONTENT -->
+	<div class="left">
+		<h1>QuizSphere</h1>
+		<p>
+			Practice smarter. Learn faster. Track progress.<br>
+			Sign in to continue with your quizzes, attempts and leaderboard.
+		</p>
+	</div>
+
+	<!-- RIGHT LOGIN BOX -->
+	<div class="right">
+		<div class="box">
+			<h2>Sign in</h2>
+
+			<form action="logaction.jsp" method="POST">
+				<div class="input">
+					<input type="text" name="u" required placeholder=" " />
+					<label>Username</label>
+				</div>
+
+				<div class="input">
+					<input type="password" name="p" required placeholder=" " />
+					<label>Password</label>
+				</div>
+
+				<button type="submit" class="button">Sign in</button>
+
+				<div class="New-User">
+					<a href="newreg.html">New User? Create account</a>
+				</div>
+			</form>
+		</div>
+	</div>
+
+</div>
+
+<footer class="footer">
+	<div class="footer-container">
+
+		<!-- Footer Left : Brand -->
+		<div class="footer-col">
+			<h2 class="footer-logo">QuizSphere</h2>
+			<p>Your smart companion for quizzes, learning, and performance tracking.</p>
+		</div>
+
+		<!-- Footer Center : Quick Links -->
+		<div class="footer-col">
+			<h3>Quick Links</h3>
+			<ul>
+				<li><a href="mcqhome.html?#home">Home</a></li>
+				<li><a href="#about">About Us</a></li>
+				<li><a href="#contact">Contact Us</a></li>
+				<li><a href="stlogin.html">Student Login</a></li>
+				<li><a href="newreg.html">Create Account</a></li>
+			</ul>
+		</div>
+
+		<!-- Footer Right : Social Icons -->
+		<div class="footer-col">
+			<h3>Connect</h3>
+			<div class="footer-social">
+				<a href="#" class="icon linkedin"><i class="fab fa-linkedin"></i></a>
+				<a href="#" class="icon github"><i class="fab fa-github"></i></a>
+				<a href="mailto:quizsphere@gmail.com" class="icon email"><i class="fas fa-envelope"></i></a>
+			</div>
+		</div>
+
+	</div>
+
+	<!-- Bottom Bar -->
+	<div class="footer-bottom">
+		<p>© 2025 QuizSphere. All Rights Reserved.</p>
+		<p><a href="#">Terms</a> <a href="#">Privacy</a></p>
+	</div>
+</footer>
+
+
+</body>
+</html>

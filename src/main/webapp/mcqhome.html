@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="ISO-8859-1">
+<title>QuizSphere</title>
+<link rel="icon"
+      href="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR5E6t_-UAilINNhPZ0TZ5oBxODN8HK0GM1jg&s"
+      type="image/png">
+
+<!-- ✅ FontAwesome for social icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	scroll-behavior: smooth;
+}
+
+body {
+	font-family: 'Poppins', sans-serif;
+	color: #fff;
+	background-color: #0f0f10;
+	overflow-x: hidden;
+}
+
+/* ✅ NAVBAR (white like stlogin) */
+nav {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 18px 60px;
+	background: white;
+	border-bottom: 1px solid #dcdcdc;
+	z-index: 100;
+}
+nav h2 {
+	font-size: 28px;
+	font-weight: 700;
+	color: #0a66c2;
+}
+nav ul {
+	list-style: none;
+	display: flex;
+	gap: 26px;
+}
+nav ul li a {
+	text-decoration: none;
+	color: #444;
+	font-weight: 600;
+	font-size: 15px;
+	transition: 0.25s;
+}
+nav ul li a:hover {
+	color: #0a66c2;
+	text-decoration: none;
+}
+
+/* ---------------- HERO SECTION ---------------- */
+.hero {
+	height: 100vh;
+	width: 100vw;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+	padding-top: 100px; /* space for navbar */
+	background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.7)),
+		url('https://images.unsplash.com/photo-1555949963-aa79dcee981c?q=80&w=1600&auto=format&fit=crop')
+		no-repeat center center/cover;
+	animation: fadeInBody 1.3s ease-in-out;
+}
+
+/* Heading */
+.hero h1 {
+	font-size: 68px;
+	font-weight: 700;
+	letter-spacing: 3px;
+	background: linear-gradient(90deg, #00c6ff, #0072ff);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+	text-shadow: 0 0 20px rgba(0, 114, 255, 0.6);
+	margin-bottom: 50px;
+}
+
+/* Buttons */
+table {
+	border-collapse: separate;
+	border-spacing: 60px;
+}
+th {
+	font-size: 26px;
+	text-transform: uppercase;
+	font-weight: 600;
+	color: #fff;
+	background: rgba(255, 255, 255, 0.1);
+	padding: 50px 70px;
+	border-radius: 25px;
+	backdrop-filter: blur(15px);
+	box-shadow: 0 4px 30px rgba(0, 0, 0, 0.4);
+	transition: all 0.4s ease;
+}
+th:hover {
+	transform: scale(1.08);
+	background: rgba(0, 114, 255, 0.9);
+	box-shadow: 0 8px 40px rgba(0, 114, 255, 0.6);
+}
+input[type="submit"] {
+	font-size: 18px;
+	font-weight: 600;
+	margin-top: 20px;
+	padding: 12px 35px;
+	border-radius: 10px;
+	border: none;
+	background: linear-gradient(90deg, #ff416c, #ff4b2b);
+	color: white;
+	cursor: pointer;
+	box-shadow: 0 4px 15px rgba(255, 75, 43, 0.4);
+	transition: all 0.3s ease;
+}
+input[type="submit"]:hover {
+	transform: scale(1.08) translateY(-2px);
+	box-shadow: 0 6px 20px rgba(255, 75, 43, 0.6);
+}
+
+/* ---------------- ABOUT SECTION ---------------- */
+.about {
+	padding: 120px 10%;
+	background: #101010;
+	text-align: center;
+}
+.about h2 {
+	font-size: 44px;
+	background: linear-gradient(90deg, #ff416c, #ff4b2b);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+	margin-bottom: 30px;
+}
+.about p {
+	font-size: 18px;
+	line-height: 1.8;
+	color: #ddd;
+	max-width: 900px;
+	margin: 0 auto;
+}
+
+/* ---------------- CONTACT SECTION ---------------- */
+.contact {
+	padding: 120px 10%;
+	background: #0f0f10;
+	text-align: center;
+}
+.contact h2 {
+	font-size: 44px;
+	color: #00c6ff;
+	margin-bottom: 30px;
+}
+.contact form {
+	max-width: 600px;
+	margin: 0 auto;
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+}
+.contact input,
+.contact textarea {
+	padding: 15px;
+	border: none;
+	border-radius: 8px;
+	background: rgba(255, 255, 255, 0.1);
+	color: white;
+	font-size: 16px;
+	resize: none;
+}
+.contact input[type="submit"] {
+	background: linear-gradient(90deg, #00c6ff, #0072ff);
+	cursor: pointer;
+	font-weight: 600;
+	border: none;
+}
+.contact input[type="submit"]:hover {
+	transform: scale(1.05);
+}
+
+/* ✅ PREMIUM FOOTER */
+.footer{
+	background:#0b0d12;
+	color:#d8e0ea;
+	padding:60px 10% 25px;
+	border-top:1px solid #1b1f26;
+}
+.footer-container{
+	display:flex;
+	justify-content:space-between;
+	flex-wrap:wrap;
+	gap:40px;
+}
+.footer-col{
+	flex:1;
+	min-width:240px;
+}
+.footer-logo{
+	font-size:28px;
+	font-weight:700;
+	color:#0a66c2;
+}
+.footer-col h3{
+	font-size:18px;
+	margin-bottom:12px;
+	color:#fff;
+}
+.footer-col p{
+	font-size:14px;
+	line-height:1.6;
+	color:#b8c3d0;
+	max-width:260px;
+}
+.footer-col ul{
+	list-style:none;
+}
+.footer-col ul li{
+	margin:6px 0;
+}
+.footer-col ul li a{
+	text-decoration:none;
+	color:#cfd6e3;
+	font-size:15px;
+	transition:.25s;
+}
+.footer-col ul li a:hover{
+	color:#0a66c2;
+	margin-left:4px;
+}
+.footer-social{
+	display:flex;
+	gap:14px;
+	margin-top:8px;
+}
+.footer-social .icon{
+	font-size:20px;
+	color:#cfd6e3;
+	transition:.25s;
+}
+.footer-social .icon:hover{
+	color:#0a66c2;
+	transform:translateY(-3px);
+}
+.footer-bottom{
+	margin-top:40px;
+	text-align:center;
+	border-top:1px solid #1d232b;
+	padding-top:15px;
+	font-size:14px;
+	color:#9ca7b8;
+}
+.footer-bottom a{
+	color:#0a66c2;
+	text-decoration:none;
+}
+.footer-bottom a:hover{text-decoration:underline}
+
+/* Animations */
+@keyframes fadeInBody {
+	from {opacity: 0;}
+	to {opacity: 1;}
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+	.hero h1 { font-size: 42px; }
+	th { display: block; margin: 20px auto; width: 80%; }
+	table { border-spacing: 20px; }
+	nav { flex-direction: column; gap: 8px; padding: 12px 24px; }
+	.footer-container{flex-direction:column;text-align:center}
+	.footer-social{justify-content:center}
+}
+/* ---------------- HERO SECTION ---------------- */
+.hero {
+	height: 100vh;
+	width: 100vw;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+	padding-top: 100px;
+
+	/* ✅ SAME background look as stlogin page */
+	background:
+		linear-gradient(to bottom, rgba(255,255,255,0.85), rgba(255,255,255,0.85)),
+		url('https://images.unsplash.com/photo-1519389950473-47ba0277781c?q=80&w=1920&auto=format&fit=crop')
+		no-repeat center/cover;
+	background-attachment: fixed;
+
+	animation: fadeInBody 1.3s ease-in-out;
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- ✅ NAVBAR -->
+<nav>
+	<h2>QuizSphere</h2>
+	<ul>
+		<li><a href="#home">Home</a></li>
+		<li><a href="#about">About Us</a></li>
+		<li><a href="#contact">Contact Us</a></li>
+		<li><a href="stlogin.html">Student Login</a></li>
+		<li><a href="newreg.html">Register</a></li>
+	</ul>
+</nav>
+
+<!-- ✅ HERO SECTION (unchanged logic) -->
+<section class="hero" id="home">
+	<h1>Welcome to QuizSphere</h1>
+	<table>
+		<tr>
+			<th>
+				Student
+				<form action="stlogin.html">
+					<input type="submit" value="Click">
+				</form>
+			</th>
+			<th>
+				Faculty
+				<form action="stlogin.html">
+					<input type="submit" value="Click">
+				</form>
+			</th>
+		</tr>
+	</table>
+</section>
+
+<!-- ✅ ABOUT (unchanged) -->
+<section class="about" id="about">
+	<h2>About Us</h2>
+	<p>
+		QuizSphere is your ultimate destination for interactive learning !
+		We combine technology, creativity, and engagement to help students and educators connect 
+		through knowledge. Our mission is to make learning exciting, competitive, and rewarding 
+		for everyone.
+	</p>
+</section>
+
+<!-- ✅ CONTACT (unchanged) -->
+<section class="contact" id="contact">
+	<h2>Contact Us</h2>
+	<form>
+		<input type="text" placeholder="Your Name" required>
+		<input type="email" placeholder="Your Email" required>
+		<textarea rows="5" placeholder="Your Message"></textarea>
+		<input type="submit" value="Send Message">
+	</form>
+</section>
+
+<!-- ✅ PREMIUM FOOTER (same as stlogin) -->
+<footer class="footer">
+	<div class="footer-container">
+
+		<div class="footer-col">
+			<h2 class="footer-logo">QuizSphere</h2>
+			<p>Your smart companion for quizzes, learning and performance tracking.</p>
+		</div>
+
+		<div class="footer-col">
+			<h3>Quick Links</h3>
+			<ul>
+				<li><a href="#home">Home</a></li>
+				<li><a href="#about">About Us</a></li>
+				<li><a href="#contact">Contact Us</a></li>
+				<li><a href="stlogin.html">Student Login</a></li>
+				<li><a href="newreg.html">Create Account</a></li>
+			</ul>
+		</div>
+
+		<div class="footer-col">
+			<h3>Connect</h3>
+			<div class="footer-social">
+				<a href="#" class="icon linkedin"><i class="fab fa-linkedin"></i></a>
+				<a href="#" class="icon github"><i class="fab fa-github"></i></a>
+				<a href="mailto:quizsphere@gmail.com" class="icon email"><i class="fas fa-envelope"></i></a>
+			</div>
+		</div>
+
+	</div>
+
+	<div class="footer-bottom">
+		<p>© 2025 QuizSphere. All Rights Reserved.</p>
+		<p><a href="#">Terms</a> • <a href="#">Privacy</a></p>
+	</div>
+</footer>
+
+</body>
+</html>
