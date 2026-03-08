@@ -29,7 +29,7 @@ This project demonstrates the use of Java web technologies such as JSP, Servlets
 * JDBC
 * HTML
 * CSS
-* MySQL Database
+* ORACLE Database
 * Apache Tomcat Server
 
 ---
@@ -50,7 +50,7 @@ MCQ-APP
 
 1. Install **Java JDK**
 2. Install **Apache Tomcat Server**
-3. Install **MySQL Database**
+3. Install **ORACLE Database**
 4. Import the project into **Eclipse IDE**
 5. Configure database connection
 6. Run the project on Tomcat server
